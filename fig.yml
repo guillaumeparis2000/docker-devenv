@@ -14,14 +14,14 @@ nginx:
     - www:/usr/share/nginx/html
     - conf/nginx.conf:/nginx.conf
     ports:
-    - 80:80
+    - 8080:80
     command: nginx -c /nginx.conf
 # Webstack VARNISH
-# varnish:
-#     image: jacksoncage/varnish
-#     links:
-#     - nginx:webstack_nginx
-#     volumes:
-#     - conf/default.vcl:/etc/varnish/default.vcl
-#     ports:
-#     - 80:80
+varnish:
+    image: jacksoncage/varnish
+    links:
+    - nginx:webstack_nginx
+    volumes:
+    - conf/default.vcl:/etc/varnish/default.vcl
+    ports:
+    - 80:80
