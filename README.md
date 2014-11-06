@@ -1,8 +1,10 @@
 docker-devenv
 =============
 
-Docker Varnish - Nginx - PHP-FPM  
-created from http://blog.nicolargo.com/2014/10/infra-lemp-docker.html
+Create:
+* PHP5.5 container with debian Wheezy
+* Nginx container with Debian Wheezy 
+* varnish container with Debian Wheezy 
 
 # Usage
 We will use [fig](http://www.fig.sh/) to start all our container in the good order.
