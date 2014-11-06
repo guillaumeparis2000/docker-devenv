@@ -3,14 +3,22 @@ MAINTAINER Guillaume PARIS <email>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ADD http://http.debian.net/debian/project/trace/ftp-master.debian.org /etc/trace_ftp-master.debian.org
-ADD http://security.debian.org/project/trace/security-master.debian.org /etc/trace_security-master.debian.org
-ADD http://www.dotdeb.org/dotdeb.gpg /etc/apt/dotdeb.gpg
+# Update the package repository and install applications
+RUN apt-get update && \
+  apt-get upgrade -y && \
+  apt-get -y install curl && \
+  apt-get -y clean
+
+#ADD http://http.debian.net/debian/project/trace/ftp-master.debian.org /etc/trace_ftp-master.debian.org
+#ADD http://security.debian.org/project/trace/security-master.debian.org /etc/trace_security-master.debian.org
+#ADD http://www.dotdeb.org/dotdeb.gpg /etc/apt/dotdeb.gpg
+
+
+RUN set -e; \
+    curl http://www.dotdeb.org/dotdeb.gpg /etc/apt/dotdeb.gpg | apt-key add -; 
 
 RUN echo 'deb http://packages.dotdeb.org wheezy all' > /etc/apt/sources.list.d/dotdeb.list && \
-    echo 'deb http://packages.dotdeb.org wheezy-php55 all' > /etc/apt/sources.list.d/dotdeb-php5.list && \
-    apt-key add /etc/apt/dotdeb.gpg && \
-    rm /etc/apt/dotdeb.gpg
+    echo 'deb http://packages.dotdeb.org wheezy-php55 all' > /etc/apt/sources.list.d/dotdeb-php5.list
 
 RUN apt-get update && \
     apt-get -y dist-upgrade
