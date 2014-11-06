@@ -1,6 +1,6 @@
 # Webstack PHP
 php:
-    image: jprjr/php-fpm
+    build: php-fpm
     volumes:
     - www:/srv/http
     ports:
