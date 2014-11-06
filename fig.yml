@@ -18,10 +18,10 @@ nginx:
     command: nginx -c /nginx.conf
 # Webstack VARNISH
 varnish:
-    image: jacksoncage/varnish
+    build: varnish
     links:
     - nginx:webstack_nginx
     volumes:
-    - conf/default.vcl:/etc/varnish/default.vcl
+    - varnish/default.vcl:/etc/varnish/default.vcl
     ports:
     - 80:80
