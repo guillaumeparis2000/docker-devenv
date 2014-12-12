@@ -9,13 +9,8 @@ RUN apt-get update && \
   apt-get -y install curl && \
   apt-get -y clean
 
-#ADD http://http.debian.net/debian/project/trace/ftp-master.debian.org /etc/trace_ftp-master.debian.org
-#ADD http://security.debian.org/project/trace/security-master.debian.org /etc/trace_security-master.debian.org
-#ADD http://www.dotdeb.org/dotdeb.gpg /etc/apt/dotdeb.gpg
-
-
 RUN set -e; \
-    curl http://www.dotdeb.org/dotdeb.gpg /etc/apt/dotdeb.gpg | apt-key add -; 
+    curl http://www.dotdeb.org/dotdeb.gpg /etc/apt/dotdeb.gpg | apt-key add -;
 
 RUN echo 'deb http://packages.dotdeb.org wheezy all' > /etc/apt/sources.list.d/dotdeb.list && \
     echo 'deb http://packages.dotdeb.org wheezy-php55 all' > /etc/apt/sources.list.d/dotdeb-php5.list
