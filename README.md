@@ -4,7 +4,8 @@ docker-devenv
 Create:
 * PHP5.5 container with debian Wheezy
 * Nginx container with Debian Wheezy 
-* varnish container with Debian Wheezy 
+* Varnish container with Debian Wheezy 
+* MySQL container with the [official docker mysql](https://registry.hub.docker.com/_/mysql/)
 
 # Usage
 We will use [fig](http://www.fig.sh/) to start all our container in the good order.
