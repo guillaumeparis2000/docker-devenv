@@ -16,6 +16,10 @@ curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`un
 fig --version
 ```
 
+## General Configuration
+The database container is accessible with the name ```db```.  
+The web site file must be put in the ```www``` folder on the host of the containers.
+
 ## Commands
 __Start__
 ```sh
