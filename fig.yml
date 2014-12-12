@@ -1,4 +1,4 @@
-# Webstack PHP
+# Webstack MYSQL
 db:
     image: mysql
     ports:
@@ -9,6 +9,8 @@ db:
       MYSQL_USER: "user"
       MYSQL_PASSWORD: "user_password"
       MYSQL_DATABASE: "my_database"
+
+# Webstack PHP
 php:
     build: php-fpm
     links:
@@ -17,6 +19,7 @@ php:
       - www:/srv/http
     ports:
       - 9000:9000
+
 # Webstack NGINX
 nginx:
     image: nginx
@@ -28,6 +31,7 @@ nginx:
     ports:
       - 8080:80
     command: nginx -c /nginx.conf
+
 # Webstack VARNISH
 varnish:
     build: varnish
