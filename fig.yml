@@ -1,27 +1,39 @@
 # Webstack PHP
+db:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_MAJOR: 5.6
+      MYSQL_ROOT_PASSWORD: "my_root_password"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "user_password"
+      MYSQL_DATABASE: "my_database"
 php:
     build: php-fpm
+    links:
+      - db:db
     volumes:
-    - www:/srv/http
+      - www:/srv/http
     ports:
-    - 9000:9000
+      - 9000:9000
 # Webstack NGINX
 nginx:
     image: nginx
     links:
-    - php:webstack_php
+      - php:webstack_php
     volumes:
-    - www:/usr/share/nginx/html
-    - conf/nginx.conf:/nginx.conf
+      - www:/usr/share/nginx/html
+      - conf/nginx.conf:/nginx.conf
     ports:
-    - 8080:80
+      - 8080:80
     command: nginx -c /nginx.conf
 # Webstack VARNISH
 varnish:
     build: varnish
     links:
-    - nginx:webstack_nginx
+      - nginx:webstack_nginx
     volumes:
-    - varnish/default.vcl:/etc/varnish/default.vcl
+      - varnish/default.vcl:/etc/varnish/default.vcl
     ports:
-    - 80:80
+      - 80:80
