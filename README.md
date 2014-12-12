@@ -18,7 +18,7 @@ fig --version
 
 ## General Configuration
 The database container is accessible with the name ```db```.  
-The web site file must be put in the ```www``` folder on the host of the containers.
+The web site files must be put in the ```www``` folder on the host of the containers.
 
 ## Commands
 __Start__
